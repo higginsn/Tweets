@@ -253,6 +253,9 @@ def tokenizeText(input):
 	input = input.replace("(", ' ')
 	input = input.replace(")", ' ')
 
+	input = re.compile(r'[!|?]+').sub(' ', input)
+	input = re.compile(r'\.+').sub('', input)
+
 
 	#split words on spaces, remove commas that aren't in the format 1,400
 	words = re.split('\s+|(?<!\d)[,]|[,](?!\d)', input.strip())
@@ -289,6 +292,8 @@ def removeStopwords(input):
 	indexesToRemove = []
 	for index, word in enumerate(words):
 		if word in stopwords:
+			indexesToRemove.append(index)
+		if word.startswith("@"):
 			indexesToRemove.append(index)
 
 	for index in reversed(indexesToRemove):
