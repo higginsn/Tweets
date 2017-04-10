@@ -230,7 +230,7 @@ def preprocess(input):
 	input = removeSGML(input)
 	input = tokenizeText(input.lower())
 	input = removeStopwords(input)
-	#input = stemWords(input)
+	input = stemWords(input)
 	return input
 
 
@@ -294,6 +294,8 @@ def removeStopwords(input):
 		if word in stopwords:
 			indexesToRemove.append(index)
 		if word.startswith("@"):
+			indexesToRemove.append(index)
+		if word == "":
 			indexesToRemove.append(index)
 
 	for index in reversed(indexesToRemove):
