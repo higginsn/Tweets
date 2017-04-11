@@ -255,6 +255,7 @@ def tokenizeText(input):
 
 	input = re.compile(r'[!|?]+').sub(' ', input)
 	input = re.compile(r'\.+').sub('', input)
+	input = input.replace("\"", '')
 
 
 	#split words on spaces, remove commas that aren't in the format 1,400
