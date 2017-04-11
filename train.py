@@ -7,6 +7,42 @@ import re
 negsentiments = {"empty", "anger", "boredom", "hate", "sadness", "worry"}
 possentiments = {"enthusiasm", "fun", "happiness", "love", "relief"}
 
+class Date:
+	def __init__(self, month = 0, day = 0, year = 0):
+		self.month = month
+		self.day = day
+		self.year = year
+
+	def daylightsavings(self):
+		if (self.month == 11 and self.day >= 6) or self.month == 12:
+			return true
+		if (self.month == 3 and self.day <= 12) or self.month < 3:
+			return true
+		return false
+
+class TweetData:
+	def __init__(self, symbol = "", date = Date(), time = "", tweet = "", sentiment = ""):
+		self.symbol = symbol
+		self.Date = date
+		self.time = time
+		self.tweet = tweet
+		self.sentiment = sentiment
+
+class Analysis:
+	def __init__(self):
+		self.start = 0.0
+		self.end = 0.0
+		self.max = 0.0
+		self.min = 0.0
+		self.total = 0.0
+		self.minutes = 0.0
+		self.average = 0.0
+		self.trend = 0.0
+
+	def calculate(self):
+		self.average = self.total / self.minutes
+		self.trend = (self.end - self.start) / self.minutes
+
 def train():
 	positives = {}
 	negatives = {}
@@ -71,10 +107,16 @@ def doshit(positives, poswordcount, numpostweets, negatives, negwordcount, numne
 	pcount = 0
 	ncount = 0
 	count = 1
+	alldata = []
 	for line in inputfile:
 		line = line[:-2]
 		line = line.strip("\"")
 		symbol, date, time, tweet, sentiment = line.split("\",\"")
+		date = date.split(" ")
+		date = Date(date[1], date[0], date[2])
+		data = TweetData(symbol, date, time, tweet)
+
+
 		tokens = preprocess.preprocess(tweet)
 		probpos = math.log(numpostweets / (numpostweets + numnegtweets))
 		probneg = math.log(numnegtweets / (numpostweets + numnegtweets))
@@ -89,15 +131,77 @@ def doshit(positives, poswordcount, numpostweets, negatives, negwordcount, numne
 				probneg += math.log(1.0 / (negwordcount + vocabsize))
 		#return
 		if probpos >= probneg:
+			data.sentiment = "positive"
 			print str(count) + " " + "positive " + sentiment
 			if sentiment != "Positive":
 				pcount += 1
 		else:
+			data.sentiment = "negative"
 			print str(count) + " " + "negative " + sentiment
 			if sentiment != "Negative":
 				ncount += 1
 		count += 1
+		alldata.append(data)
 	print pcount, ncount
+	return alldata
+
+
+def recordshit(start, lines):
+	hoursummary = Analysis()
+	for i in range(start, min(start + 60, 781)):
+		price = float(lines[i].split(" ")[-1])
+		hoursummary.total += price
+		if i == start:
+			hoursummary.start = price
+			hoursummary.min = price
+		if i == start + 59 or i == 780:
+			hoursummary.end = price
+		hoursummary.min = min(hoursummary.min, price)
+		hoursummary.max = max(hoursummary.max, price)
+		hoursummary.minutes += 1
+	hoursummary.calculate()
+	return hoursummary
+
+def comparetostock(alldata, folder):
+	outputfile = open(os.path.dirname(__file__) + "stock_stuff", "w")
+	for filename in os.listdir(os.path.dirname(__file__) + folder):
+		stockfile = open(os.path.dirname(__file__) + folder + "/" + filename, "r")
+		lines = stockfile.readlines()
+		filename = filename[:-4]
+		index, symbol, filedate = filename.split("_")
+		filedate = filedate.split("-")
+		filedate = Date(filedate[1], filedate[0], filedate[2])
+		#daylight savings
+		if filedate.daylightsavings:
+			opentime = "13:31"
+			openhour = 13
+			closetime = "20:00"
+			closehour = 20
+		else:
+			opentime = "14:31"
+			openhour = 14
+			closetime = "21:00"
+			closehour = 21
+		#find starting line based on tweet time
+		if alldata[int(index)-1].time > closetime or alldata[int(index)-1].time < opentime:
+			startpoint = 390 - 60 #390 lines per day
+		else:
+			hour, minute = alldata[int(index)-1].time.split(":")
+			startpoint = 390 + 60 * (float(hour) - openhour) + (float(minute) - 31) - 60
+		#loop through hour before tweet
+		beforehour = recordshit(startpoint, lines)
+		#loop through hour after tweet
+		afterhour = recordshit(startpoint + 60, lines)
+		#output
+		outputfile.write(index + " " + alldata[int(index)-1].symbol + " " + alldata[int(index)-1].sentiment + "\n")
+		outputfile.write(str(beforehour.min) + " " + str(beforehour.max) + " " + str(beforehour.trend) + " " + str(beforehour.average) + "\n")
+		outputfile.write(str(afterhour.min) + " " + str(afterhour.max) + " " + str(afterhour.trend) + " " + str(afterhour.average) + "\n\n")
+		
+		
+
+
 
 positives, poswordcount, numpostweets, negatives, negwordcount, numnegtweets, vocabsize = train()
-doshit(positives, poswordcount, numpostweets, negatives, negwordcount, numnegtweets, vocabsize)
+alldata = doshit(positives, poswordcount, numpostweets, negatives, negwordcount, numnegtweets, vocabsize)
+comparetostock(alldata, "stock_data")
+
