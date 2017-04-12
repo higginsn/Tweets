@@ -1,0 +1,288 @@
+Symbol: NYT
+Tweet: "FAKE NEWS media knowingly doesn't tell the truth. A great danger to our country. The failing @nytimes has become a joke. Likewise @CNN. Sad!"
+Text Sentiment: negative
+Stock Sentiment: negative
+Correct Sentiment: negative
+
+Symbol: BA
+Tweet: "Going to Charleston, South Carolina, in order to spend time with Boeing and talk jobs! Look forward to it."
+Text Sentiment: negative
+Stock Sentiment: positive
+Correct Sentiment: positive
+
+Symbol: CMCSA
+Tweet: "The fake news media is going crazy with their conspiracy theories and blind hatred. @MSNBC & @CNN are unwatchable."
+Text Sentiment: negative
+Stock Sentiment: negative
+Correct Sentiment: negative
+
+Symbol: TWX
+Tweet: "The fake news media is going crazy with their conspiracy theories and blind hatred. @MSNBC & @CNN are unwatchable."
+Text Sentiment: negative
+Stock Sentiment: negative
+Correct Sentiment: negative
+
+Symbol: FOXA
+Tweet: "@foxandfriends is great!"
+Text Sentiment: positive
+Stock Sentiment: negative
+Correct Sentiment: positive
+
+Symbol: INTC
+Tweet: "Thank you Brian Krzanich, CEO of @Intel. A great investment ($7 BILLION) in American INNOVATION and JOBS! #AmericaFirst____"
+Text Sentiment: positive
+Stock Sentiment: negative
+Correct Sentiment: positive
+
+Symbol: JWN
+Tweet: "My daughter Ivanka has been treated so unfairly by @Nordstrom. She is a great person -- always pushing me to do the right thing! Terrible!"
+Text Sentiment: negative
+Stock Sentiment: positive
+Correct Sentiment: negative
+
+Symbol: NYT
+Tweet: "The failing @nytimes writes total fiction concerning me. They have gotten it wrong for two years, and now are making up stories & "sources!""
+Text Sentiment: negative
+Stock Sentiment: negative
+Correct Sentiment: negative
+
+Symbol: DAL
+Tweet: "Only 109 people out of 325,000 were detained and held for questioning. Big problems at airports were caused by Delta computer outage,....."
+Text Sentiment: negative
+Stock Sentiment: negative
+Correct Sentiment: negative
+
+Symbol: NYT
+Tweet: "The failing @nytimes has disgraced the media world. Gotten me wrong for two solid years. Change libel laws?"
+Text Sentiment: negative
+Stock Sentiment: positive
+Correct Sentiment: negative
+
+Symbol: NYT
+Tweet: "The failing @nytimes has been wrong about me from the very beginning. Said I would lose the primaries, then the general election. FAKE NEWS!"
+Text Sentiment: negative
+Stock Sentiment: negative
+Correct Sentiment: negative
+
+Symbol: CMCSA
+Tweet: "They were many times higher than FAKE NEWS @CNN - public is smart!"
+Text Sentiment: positive
+Stock Sentiment: negative
+Correct Sentiment: negative
+
+Symbol: FOXA
+Tweet: "Congratulations to @FoxNews for being number one in inauguration ratings."
+Text Sentiment: positive
+Stock Sentiment: positive
+Correct Sentiment: positive
+
+Symbol: F
+Tweet: "Great meeting with Ford CEO Mark Fields and General Motors CEO Mary Barra at the @WhiteHouse today."
+Text Sentiment: positive
+Stock Sentiment: positive
+Correct Sentiment: positive
+
+Symbol: GM
+Tweet: "Great meeting with Ford CEO Mark Fields and General Motors CEO Mary Barra at the @WhiteHouse today."
+Text Sentiment: positive
+Stock Sentiment: positive
+Correct Sentiment: positive
+
+Symbol: GM
+Tweet: "Thank you to General Motors and Walmart for starting the big jobs push back into the U.S.!"
+Text Sentiment: negative
+Stock Sentiment: positive
+Correct Sentiment: positive
+
+Symbol: WMT
+Tweet: "Thank you to General Motors and Walmart for starting the big jobs push back into the U.S.!"
+Text Sentiment: negative
+Stock Sentiment: positive
+Correct Sentiment: positive
+
+Symbol: CMCSA
+Tweet: ".@CNN is in a total meltdown with their FAKE NEWS because their ratings are tanking since election and their credibility will soon be gone!"
+Text Sentiment: negative
+Stock Sentiment: negative
+Correct Sentiment: negative
+
+Symbol: F
+Tweet: "Ford said last week that it will expand in Michigan and U.S. instead of building a BILLION dollar plant in Mexico. Thank you Ford & Fiat C!"
+Text Sentiment: negative
+Stock Sentiment: positive
+Correct Sentiment: positive
+
+Symbol: FCAU
+Tweet: "Ford said last week that it will expand in Michigan and U.S. instead of building a BILLION dollar plant in Mexico. Thank you Ford & Fiat C!"
+Text Sentiment: negative
+Stock Sentiment: positive
+Correct Sentiment: positive
+
+Symbol: NYT
+Tweet: "Remember when the failing @nytimes apologized to its subscribers, right after the election, because their coverage was so wrong. Now worse!"
+Text Sentiment: negative
+Stock Sentiment: negative
+Correct Sentiment: negative
+
+Symbol: TM
+Tweet: "Toyota Motor said will build a new plant in Baja, Mexico, to build Corolla cars for U.S. NO WAY! Build plant in U.S. or pay big border tax."
+Text Sentiment: negative
+Stock Sentiment: negative
+Correct Sentiment: negative
+
+Symbol: F
+Tweet: "Thank you to Ford for scrapping a new plant in Mexico and creating 700 new jobs in the U.S. This is just the beginning - much more to follow"
+Text Sentiment: positive
+Stock Sentiment: positive
+Correct Sentiment: positive
+
+Symbol: GM
+Tweet: "General Motors is sending Mexican made model of Chevy Cruze to U.S. car dealers-tax free across border. Make in U.S.A.or pay big border tax!"
+Text Sentiment: negative
+Stock Sentiment: positive
+Correct Sentiment: negative
+
+Symbol: LMT
+Tweet: "Based on the tremendous cost and cost overruns of the Lockheed Martin F-35"
+Text Sentiment: negative
+Stock Sentiment: negative
+Correct Sentiment: negative
+
+Symbol: BA
+Tweet: "I have asked Boeing to price-out a comparable F-18 Super Hornet!"
+Text Sentiment: negative
+Stock Sentiment: negative
+Correct Sentiment: positive
+
+Symbol: TIME
+Tweet: "Thank you to Time Magazine and Financial Times for naming me "Person of the Year" - a great honor!"
+Text Sentiment: positive
+Stock Sentiment: positive
+Correct Sentiment: positive
+
+Symbol: LMT
+Tweet: "The F-35 program and cost is out of control. Billions of dollars can and will be saved on military (and other) purchases after January 20th."
+Text Sentiment: negative
+Stock Sentiment: negative
+Correct Sentiment: negative
+
+Symbol: TYO: 9984
+Tweet: "Masa (SoftBank) of Japan has agreed to invest $50 billion in the U.S. toward businesses and 50,000 new jobs...."
+Text Sentiment: positive
+Stock Sentiment: negative
+Correct Sentiment: positive
+
+Symbol: BA
+Tweet: "Boeing is building a brand new 747 Air Force One for future presidents, but costs are out of control, more than $4 billion. Cancel order!"
+Text Sentiment: negative
+Stock Sentiment: negative
+Correct Sentiment: negative
+
+Symbol: NYT
+Tweet: "The failing @nytimes just announced that complaints about them are at a 15 year high. I can fully understand that - but why announce?"
+Text Sentiment: negative
+Stock Sentiment: negative
+Correct Sentiment: negative
+
+Symbol: F
+Tweet: "Big announcement by Ford today. Major investment to be made in three Michigan plants. Car companies coming back to U.S.  JOBS! JOBS! JOBS!"
+Text Sentiment: negative
+Stock Sentiment: positive
+Correct Sentiment: positive
+
+Symbol: F
+Tweet: "Just got a call from my friend Bill Ford, Chairman of Ford, who advised me that he will be keeping the Lincoln plant in Kentucky - no Mexico"
+Text Sentiment: negative
+Stock Sentiment: negative
+Correct Sentiment: positive
+
+Symbol: GOOGL
+Tweet: "Wow, Twitter, Google and Facebook are burying the FBI criminal investigation of Clinton. Very dishonest media!"
+Text Sentiment: negative
+Stock Sentiment: negative
+Correct Sentiment: negative
+
+Symbol: FB
+Tweet: "Wow, Twitter, Google and Facebook are burying the FBI criminal investigation of Clinton. Very dishonest media!"
+Text Sentiment: negative
+Stock Sentiment: negative
+Correct Sentiment: negative
+
+Symbol: TWTR
+Tweet: "Wow, Twitter, Google and Facebook are burying the FBI criminal investigation of Clinton. Very dishonest media!"
+Text Sentiment: negative
+Stock Sentiment: positive
+Correct Sentiment: negative
+
+Symbol: NYT
+Tweet: "The failing @nytimes reporters don't even call us anymore, they just write whatever they want to write, making up sources along the way!"
+Text Sentiment: negative
+Stock Sentiment: positive
+Correct Sentiment: negative
+
+Symbol: NYT
+Tweet: "The phony story in the failing @nytimes is a TOTAL FABRICATION. Written by same people as last discredited story on women. WATCH!"
+Text Sentiment: negative
+Stock Sentiment: negative
+Correct Sentiment: negative
+
+Symbol: NYT
+Tweet: "The failing @nytimes has gone nuts that Crooked Hillary is doing so badly. They are willing to say anything, has become a laughingstock rag!"
+Text Sentiment: negative
+Stock Sentiment: positive
+Correct Sentiment: negative
+
+Symbol: NYT
+Tweet: "The failing @nytimes has become a newspaper of fiction. Their stories about me always quote non-existent unnamed sources. Very dishonest!"
+Text Sentiment: negative
+Stock Sentiment: positive
+Correct Sentiment: negative
+
+Symbol: NYT
+Tweet: "Wow, it is unbelievable how distorted, one-sided and biased the media is against us. The failing @nytimes is a joke. @CNN is laughable!"
+Text Sentiment: negative
+Stock Sentiment: negative
+Correct Sentiment: negative
+
+Symbol: CMCSA
+Tweet: "Wow, it is unbelievable how distorted, one-sided and biased the media is against us. The failing @nytimes is a joke. @CNN is laughable!"
+Text Sentiment: negative
+Stock Sentiment: positive
+Correct Sentiment: negative
+
+Symbol: CHTR
+Tweet: "Today, I was thrilled to announce a commitment of $25 BILLION & 20K AMERICAN JOBS over the next 4 years. THANK YOU Charter Communications!"
+Text Sentiment: negative
+Stock Sentiment: positive
+Correct Sentiment: positive
+
+Symbol: TWX
+Tweet: "Just heard Fake News CNN is doing polls again despite the fact that their election polls were a WAY OFF disaster."
+Text Sentiment: negative
+Stock Sentiment: positive
+Correct Sentiment: negative
+
+Symbol: FOXA
+Tweet: "Much higher ratings at Fox"
+Text Sentiment: positive
+Stock Sentiment: positive
+Correct Sentiment: positive
+
+Symbol: XOM
+Tweet: "Buy American & hire American are the principles at the core of my agenda, which is: JOBS, JOBS, JOBS! Thank you @exxonmobil."
+Text Sentiment: negative
+Stock Sentiment: negative
+Correct Sentiment: positive
+
+Symbol: NYT
+Tweet: "For first time the failing @nytimes will take an ad (a bad one) to help save its failing reputation. Try reporting accurately & fairly!"
+Text Sentiment: negative
+Stock Sentiment: negative
+Correct Sentiment: negative
+
+Symbol: TWX
+Tweet: "FAKE NEWS media knowingly doesn't tell the truth. A great danger to our country. The failing @nytimes has become a joke. Likewise @CNN. Sad!"
+Text Sentiment: negative
+Stock Sentiment: negative
+Correct Sentiment: negative
+

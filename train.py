@@ -27,6 +27,7 @@ class TweetData:
 		self.time = time
 		self.tweet = tweet
 		self.sentiment = sentiment
+		self.correctsentiment = ""
 
 class Analysis:
 	def __init__(self):
@@ -38,10 +39,11 @@ class Analysis:
 		self.minutes = 0.0
 		self.average = 0.0
 		self.trend = 0.0
+		self.maxchange = 0.0
 
 	def calculate(self):
 		self.average = self.total / self.minutes
-		self.trend = (self.end - self.start) / self.minutes
+		self.trend = self.trend / (self.minutes - 1)
 
 def train():
 	positives = {}
@@ -87,16 +89,16 @@ def train():
 		newval = (negatives[word] + 1) / (negwordcount + vocabsize)
 		negatives[word] = newval
 	#output
-	outputfile = open("positives.txt", "w")
-	outputfile.write("vocab size, positive word count, number of positive tweets\n")
-	outputfile.write(str(vocabsize) + ", " + str(poswordcount) + ", " + str(numpostweets) + "\n")
-	for word, prob in positives.items():
-		outputfile.write(word + " " + str(prob) + "\n")
-	outputfile = open("negatives.txt", "w")
-	outputfile.write("vocab size, negative word count, number of negative tweets\n")
-	outputfile.write(str(vocabsize) + ", " + str(negwordcount) + ", " + str(numnegtweets) + "\n")
-	for word, prob in negatives.items():
-		outputfile.write(word + " " + str(prob) + "\n")
+	# outputfile = open("positives.txt", "w")
+	# outputfile.write("vocab size, positive word count, number of positive tweets\n")
+	# outputfile.write(str(vocabsize) + ", " + str(poswordcount) + ", " + str(numpostweets) + "\n")
+	# for word, prob in positives.items():
+	# 	outputfile.write(word + " " + str(prob) + "\n")
+	# outputfile = open("negatives.txt", "w")
+	# outputfile.write("vocab size, negative word count, number of negative tweets\n")
+	# outputfile.write(str(vocabsize) + ", " + str(negwordcount) + ", " + str(numnegtweets) + "\n")
+	# for word, prob in negatives.items():
+	# 	outputfile.write(word + " " + str(prob) + "\n")
 	#print sorted(positives.items(), key= lambda x:(x[1], x[0]))
 	#print sorted(negatives.items(), key= lambda x:(x[1], x[0]))
 
@@ -129,41 +131,61 @@ def doshit(positives, poswordcount, numpostweets, negatives, negwordcount, numne
 				probneg += math.log(negatives[token])
 			else:
 				probneg += math.log(1.0 / (negwordcount + vocabsize))
+		data.correctsentiment = sentiment
 		#return
 		if probpos >= probneg:
 			data.sentiment = "positive"
-			print str(count) + " " + "positive " + sentiment
-			if sentiment != "Positive":
+			#print str(count) + " " + "positive " + sentiment
+			if sentiment != "positive":
 				pcount += 1
 		else:
 			data.sentiment = "negative"
-			print str(count) + " " + "negative " + sentiment
-			if sentiment != "Negative":
+			#print str(count) + " " + "negative " + sentiment
+			if sentiment != "negative":
 				ncount += 1
 		count += 1
 		alldata.append(data)
-	print pcount, ncount
+	print "Text Sentiment Accuracy: ", float(count - pcount - ncount) / float(count)
 	return alldata
 
 
-def recordshit(start, lines):
+def recordshit(start, lines, after):
 	hoursummary = Analysis()
+	previousprice = 0.0
+	currentchange = 0.0
 	for i in range(start, min(start + 60, 781)):
-		price = float(lines[i].split(" ")[-1])
+		price = float(lines[i-1].split(" ")[-1])
 		hoursummary.total += price
 		if i == start:
 			hoursummary.start = price
 			hoursummary.min = price
-		if i == start + 59 or i == 780:
+		elif i == start + 59 or i == 780:
 			hoursummary.end = price
+			hoursummary.trend += price - previousprice
+		else:
+			hoursummary.trend += price - previousprice
+		if i != start and after:
+			tempdiff = price - previousprice
+			if (tempdiff >= 0 and currentchange >= 0) or (tempdiff <= 0 and currentchange <= 0):
+				currentchange += tempdiff
+			else:
+				if abs(currentchange) > abs(hoursummary.maxchange):
+					hoursummary.maxchange = currentchange
+				currentchange = 0
+
+		previousprice = price
 		hoursummary.min = min(hoursummary.min, price)
 		hoursummary.max = max(hoursummary.max, price)
 		hoursummary.minutes += 1
+
 	hoursummary.calculate()
 	return hoursummary
 
 def comparetostock(alldata, folder):
+	countgood = 0.0
+	count = 0.0
 	outputfile = open(os.path.dirname(__file__) + "stock_stuff", "w")
+	prettyoutput = open(os.path.dirname(__file__) + "classifications.txt", "w")
 	for filename in os.listdir(os.path.dirname(__file__) + folder):
 		stockfile = open(os.path.dirname(__file__) + folder + "/" + filename, "r")
 		lines = stockfile.readlines()
@@ -189,19 +211,40 @@ def comparetostock(alldata, folder):
 			hour, minute = alldata[int(index)-1].time.split(":")
 			startpoint = 390 + 60 * (float(hour) - openhour) + (float(minute) - 31) - 60
 		#loop through hour before tweet
-		beforehour = recordshit(startpoint, lines)
+		beforehour = recordshit(startpoint, lines, False)
 		#loop through hour after tweet
-		afterhour = recordshit(startpoint + 60, lines)
+		afterhour = recordshit(startpoint + 60, lines, True)
+		classify(alldata[int(index)-1], beforehour, afterhour, prettyoutput)
 		#output
 		outputfile.write(index + " " + alldata[int(index)-1].symbol + " " + alldata[int(index)-1].sentiment + "\n")
+		outputfile.write("Hour Before Tweet\n")
+		outputfile.write("Minimum	Maximum		Trend 	Average Price\n")
 		outputfile.write(str(beforehour.min) + " " + str(beforehour.max) + " " + str(beforehour.trend) + " " + str(beforehour.average) + "\n")
-		outputfile.write(str(afterhour.min) + " " + str(afterhour.max) + " " + str(afterhour.trend) + " " + str(afterhour.average) + "\n\n")
+		outputfile.write("Hour After Tweet\n")
+		outputfile.write("Minimum	Maximum		Trend 	Average Price 	Maximum Change\n")
+		outputfile.write(str(afterhour.min) + " " + str(afterhour.max) + " " + str(afterhour.trend) + " " + str(afterhour.average) + " " + str(afterhour.maxchange/beforehour.average*100) + "\n\n")
+		count += 1
+		if alldata[int(index)-1].correctsentiment == "positive" and afterhour.maxchange > 0:
+			countgood += 1
+		elif alldata[int(index)-1].correctsentiment == "negative" and afterhour.maxchange < 0:
+			countgood += 1
+	#printing shit
+	print "Stock Sentiment Accuracy: ", countgood / count
+
 		
-		
+def classify(datapoint, beforehour, afterhour, outputfile):
+	outputfile.write("Symbol: " + datapoint.symbol + "\n")
+	outputfile.write("Tweet: \"" + datapoint.tweet + "\"\n")
+	outputfile.write("Text Sentiment: " + datapoint.sentiment + "\n")
+	if afterhour.maxchange > 0:
+		outputfile.write("Stock Sentiment: positive\n")
+	else:
+		outputfile.write("Stock Sentiment: negative\n")
+	outputfile.write("Correct Sentiment: " + datapoint.correctsentiment + "\n\n")
 
+def main():
+	positives, poswordcount, numpostweets, negatives, negwordcount, numnegtweets, vocabsize = train()
+	alldata = doshit(positives, poswordcount, numpostweets, negatives, negwordcount, numnegtweets, vocabsize)
+	comparetostock(alldata, "stock_data")
 
-
-positives, poswordcount, numpostweets, negatives, negwordcount, numnegtweets, vocabsize = train()
-alldata = doshit(positives, poswordcount, numpostweets, negatives, negwordcount, numnegtweets, vocabsize)
-comparetostock(alldata, "stock_data")
-
+main()
