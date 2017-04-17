@@ -31,7 +31,7 @@ Correct Sentiment: positive
 Symbol: INTC
 Tweet: "Thank you Brian Krzanich, CEO of @Intel. A great investment ($7 BILLION) in American INNOVATION and JOBS! #AmericaFirst____"
 Text Sentiment: positive
-Stock Sentiment: negative
+Stock Sentiment: positive
 Correct Sentiment: positive
 
 Symbol: JWN
@@ -157,7 +157,7 @@ Correct Sentiment: positive
 Symbol: TIME
 Tweet: "Thank you to Time Magazine and Financial Times for naming me "Person of the Year" - a great honor!"
 Text Sentiment: positive
-Stock Sentiment: positive
+Stock Sentiment: negative
 Correct Sentiment: positive
 
 Symbol: LMT
@@ -166,10 +166,10 @@ Text Sentiment: negative
 Stock Sentiment: negative
 Correct Sentiment: negative
 
-Symbol: TYO: 9984
+Symbol: S
 Tweet: "Masa (SoftBank) of Japan has agreed to invest $50 billion in the U.S. toward businesses and 50,000 new jobs...."
 Text Sentiment: positive
-Stock Sentiment: negative
+Stock Sentiment: positive
 Correct Sentiment: positive
 
 Symbol: BA
@@ -217,7 +217,7 @@ Correct Sentiment: negative
 Symbol: NYT
 Tweet: "The failing @nytimes reporters don't even call us anymore, they just write whatever they want to write, making up sources along the way!"
 Text Sentiment: negative
-Stock Sentiment: positive
+Stock Sentiment: negative
 Correct Sentiment: negative
 
 Symbol: NYT
@@ -241,7 +241,7 @@ Correct Sentiment: negative
 Symbol: NYT
 Tweet: "Wow, it is unbelievable how distorted, one-sided and biased the media is against us. The failing @nytimes is a joke. @CNN is laughable!"
 Text Sentiment: negative
-Stock Sentiment: negative
+Stock Sentiment: positive
 Correct Sentiment: negative
 
 Symbol: CMCSA
@@ -259,7 +259,7 @@ Correct Sentiment: positive
 Symbol: TWX
 Tweet: "Just heard Fake News CNN is doing polls again despite the fact that their election polls were a WAY OFF disaster."
 Text Sentiment: negative
-Stock Sentiment: positive
+Stock Sentiment: negative
 Correct Sentiment: negative
 
 Symbol: FOXA
