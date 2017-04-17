@@ -23,4 +23,4 @@ trainingdata.csv - publicly accessed training data of 40K random tweets with lab
 
 # Results
 Stock price classification accuracy: 73%
-Naive Bayes accuracy: 76%
+Naive Bayes accuracy: 72%
