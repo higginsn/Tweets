@@ -189,7 +189,7 @@ def recordshit(start, lines, after):
 def comparetostock(alldata, folder):
 	countgood = 0.0
 	count = 0.0
-	outputfile = open(os.path.dirname(__file__) + "stock_stuff", "w")
+	outputfile = open(os.path.dirname(__file__) + "stock_results.txt", "w")
 	prettyoutput = open(os.path.dirname(__file__) + "classifications.txt", "w")
 	for filename in os.listdir(os.path.dirname(__file__) + folder):
 		stockfile = open(os.path.dirname(__file__) + folder + "/" + filename, "r")
