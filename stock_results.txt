@@ -14,7 +14,7 @@ Hour After Tweet
 Minimum	Maximum		Trend 	Average Price 	Maximum Change
 170.553 173.24 0.00489743589744 172.402680307 0.607040849517
 
-12 CMCSA negative
+12 CMCSA positive
 Hour Before Tweet
 Minimum	Maximum		Trend 	Average Price
 75.74 76.65 0.00154222222222 76.2620177384
@@ -22,7 +22,7 @@ Hour After Tweet
 Minimum	Maximum		Trend 	Average Price 	Maximum Change
 75.74 76.65 0.00130769230769 76.3005242967 -0.458944059415
 
-13 TWX negative
+13 TWX positive
 Hour Before Tweet
 Minimum	Maximum		Trend 	Average Price
 95.98 96.47 -0.000311111111111 96.3046053215

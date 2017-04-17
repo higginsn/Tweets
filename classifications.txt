@@ -12,13 +12,13 @@ Correct Sentiment: positive
 
 Symbol: CMCSA
 Tweet: "The fake news media is going crazy with their conspiracy theories and blind hatred. @MSNBC & @CNN are unwatchable."
-Text Sentiment: negative
+Text Sentiment: positive
 Stock Sentiment: negative
 Correct Sentiment: negative
 
 Symbol: TWX
 Tweet: "The fake news media is going crazy with their conspiracy theories and blind hatred. @MSNBC & @CNN are unwatchable."
-Text Sentiment: negative
+Text Sentiment: positive
 Stock Sentiment: negative
 Correct Sentiment: negative
 
